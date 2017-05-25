@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <!--Features For IE-->
+    <meta http-equiv="Cache-Control" content="no-cache">
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/js/multiple/multiple-select.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#home">Wiki-Farmer</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#!/"><i class="fa fa-shield"></i>Strona główna</a></li>
+                    <li><a href="#!/login"><i class="fa fa-shield"></i>Logowanie</a></li>
+                    <li><a href="#!/zarzadzaj"><i class="fa fa-shield"></i>Zarzadzaj</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+</header>
+<div ng-view>
+</div>
+</body>
+</html>
+
+<script type="text/javascript" src="/jQuery/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="/angular-1.6.2/angular.min.js"></script>
+<script type="text/javascript" src="/angular-1.6.2/angular-resource.min.js"></script>
+<script type="text/javascript" src="/angular-1.6.2/angular-route.min.js"></script>
+<script type="text/javascript" src="/angular-1.6.2/ui-bootstrap-tpls-2.5.0.min.js"></script>
+<script type="text/javascript" src="/angular-1.6.2/ngStorage/ngStorage.js"></script>
+<script type="text/javascript" src="/js/multiple/multiple-select.js"></script>
+
+
+<script type="text/javascript" src="/app/app.js" charset="utf-8"></script>
+<script type="text/javascript" src='/app/main/MainController.js' charset="utf-8"></script>
+
+<script type="text/javascript" src='/app/user/LoginController.js' charset="utf-8"></script>
+<script type="text/javascript" src='/app/user/LoginService.js' charset="utf-8"></script>
+
+<script type="text/javascript" src='/app/user/UserController.js' charset="utf-8"></script>
+<script type="text/javascript" src='/app/user/UserService.js' charset="utf-8"></script>
+
+<!--Region-->
+<script type="text/javascript" src='/app/main/DodajController.js' charset="utf-8"></script>
+<script type="text/javascript" src='/app/main/CrudService.js' charset="utf-8"></script>
+<script type="text/javascript" src='/app/main/EdytujRegionController.js' charset="utf-8"></script>
+<script type="text/javascript" src='/app/main/EdytujUpraweController.js' charset="utf-8"></script>
+<script type="text/javascript" src='/app/main/EdytujZagrozenieController.js' charset="utf-8"></script>
+<script type="text/javascript" src='/app/main/EdytujOchroneController.js' charset="utf-8"></script>
+

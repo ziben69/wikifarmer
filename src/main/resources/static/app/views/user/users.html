@@ -1,0 +1,52 @@
+<div class="col-md-2"></div>
+<div class="col-md-8">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Users</h3>
+        </div>
+        <div class="panel-body">
+            <div class="col-md-6">
+                <form>
+                    <div class="form-group">
+                        <label for="uLogin">Login of user:</label>
+                        <input type="text" class="form-control" id="uLogin" ng-model="uLogin">
+                    </div>
+                    <div class="form-group">
+                        <label for="uPassword">Password:</label>
+                        <input type="password" class="form-control" id="uPassword" ng-model="uPassword">
+                    </div>
+                    <button type="submit" class="btn btn-default" ng-click="addUser()">Add</button>
+                </form>
+                <br/>
+
+            </div>
+            <div class="col-md-6">
+            </div>
+            <br/>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Login</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="u in users">
+                    <td>
+                        {{u.id}}
+                    </td>
+                    <td>{{u.login}}</td>
+                    <!--<td>-->
+                        <!--<a ng-href="index.html#/users/edit/{{u.id}}" class="btn btn-info"-->
+                           <!--role="button">Edit</a>-->
+                        <!--<a ng-href="" class="btn btn-info"-->
+                           <!--role="button" ng-click="test()">Remove</a>-->
+                    <!--</td>-->
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+<div class="col-md-2"></div>

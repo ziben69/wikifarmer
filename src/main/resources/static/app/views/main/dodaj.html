@@ -1,0 +1,239 @@
+<div class="col-md-1"></div>
+<div class="col-md-10">
+    <div>
+
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="!#region" aria-controls="home" role="tab" data-toggle="tab">Region</a>
+            </li>
+            <li role="presentation"><a href="!#uprawa" aria-controls="profile" role="tab" data-toggle="tab">Uprawa</a>
+            </li>
+            <li role="presentation"><a href="!#zagrozenie" aria-controls="messages" role="tab" data-toggle="tab">Zagrożenie</a>
+            </li>
+            <li role="presentation"><a href="!#ochrona" aria-controls="settings" role="tab"
+                                       data-toggle="tab">Ochrona</a></li>
+            <li role="presentation"><a href="!#regionIuprawa" aria-controls="settings" role="tab"
+                                       data-toggle="tab">Region/Uprawa</a></li>
+            <li role="presentation"><a href="!#uprawaIzagrozenia" aria-controls="settings" role="tab"
+                                       data-toggle="tab">Uprawa/Zagrozenia</a></li>
+            <li role="presentation"><a href="!#zagrozenieIochrony" aria-controls="settings" role="tab"
+                                       data-toggle="tab">Zagrozenie/Ochrony</a></li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="region">
+                <form>
+                    <div class="form-group">
+                        <label for="rNazwa">Nazwa:</label>
+                        <input type="text" class="form-control" id="rNazwa" ng-model="region.nazwa">
+                    </div>
+                    <div class="form-group">
+                        <label for="rOpis">Opis:</label>
+                        <textarea rows="3" class="form-control" id="rOpis" ng-model="region.opis"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-default" ng-click="dodajRegion()">Dodaj</button>
+                </form>
+                <br/>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3>Regiony</h3>
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="col-md-12">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4"><input ng-model="$ctrl.query" class="form-control input-sm" placeholder="Filtracja"/></div>
+                            <div class="col-md-4"></div>
+                        </div>
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>Nazwa</th>
+                                <th>Opis</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="r in wszystkieRegiony | filter:$ctrl.query">
+                                <td>{{r.nazwa}}</td>
+                                <td>{{r.opis}}</td>
+                                <td>
+                                    <a href="index.html#!/region/edytuj/{{r.id}}" role="button">Zmień</a>
+                                </td>
+
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="uprawa">
+                <form>
+                    <div class="form-group">
+                        <label for="uNazwa">Nazwa:</label>
+                        <input type="text" class="form-control" id="uNazwa" ng-model="uprawa.nazwa">
+                    </div>
+                    <div class="form-group">
+                        <label for="uOpis">Opis:</label>
+                        <textarea rows="3" class="form-control" id="uOpis" ng-model="uprawa.opis"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-default" ng-click="dodajUprawe()">Dodaj</button>
+                </form>
+                <br />
+                <div class="panel-body">
+                    <div class="col-md-12">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4"><input ng-model="$ctrl.query" class="form-control input-sm" placeholder="Filtracja"/></div>
+                        <div class="col-md-4"></div>
+                    </div>
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>Nazwa</th>
+                            <th>Opis</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="r in wszystkieUprawy | filter:$ctrl.query">
+                            <td>{{r.nazwa}}</td>
+                            <td>{{r.opis}}</td>
+                            <td>
+                                <a href="index.html#!/uprawa/edytuj/{{r.id}}" role="button">Zmień</a>
+                            </td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="zagrozenie">
+                <form>
+                    <div class="form-group">
+                        <label for="zNazwa">Nazwa:</label>
+                        <input type="text" class="form-control" id="zNazwa" ng-model="zagrozenie.nazwa">
+                    </div>
+                    <div class="form-group">
+                        <label for="zOpis">Opis:</label>
+                        <textarea rows="3" class="form-control" id="zOpis" ng-model="zagrozenie.opis"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-default" ng-click="dodajZagrozenie()">Dodaj</button>
+                </form>
+                <br />
+                <div class="panel-body">
+                    <div class="col-md-12">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4"><input ng-model="$ctrl.query" class="form-control input-sm" placeholder="Filtracja"/></div>
+                        <div class="col-md-4"></div>
+                    </div>
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>Nazwa</th>
+                            <th>Opis</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="r in wszystkieZagrozenia | filter:$ctrl.query">
+                            <td>{{r.nazwa}}</td>
+                            <td>{{r.opis}}</td>
+                            <td>
+                                <a href="index.html#!/zagrozenie/edytuj/{{r.id}}" role="button">Zmień</a>
+                            </td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="ochrona">
+                <form>
+                    <div class="form-group">
+                        <label for="oNazwa">Nazwa:</label>
+                        <input type="text" class="form-control" id="oNazwa" ng-model="ochrona.nazwa">
+                    </div>
+                    <div class="form-group">
+                        <label for="oOpis">Opis:</label>
+                        <textarea rows="3" class="form-control" id="oOpis" ng-model="ochrona.opis"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-default" ng-click="dodajOchrone()">Dodaj</button>
+                </form>
+                <br />
+                <div class="panel-body">
+                    <div class="col-md-12">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4"><input ng-model="$ctrl.query" class="form-control input-sm" placeholder="Filtracja"/></div>
+                        <div class="col-md-4"></div>
+                    </div>
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>Nazwa</th>
+                            <th>Opis</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="r in wszystkieOchrony | filter:$ctrl.query">
+                            <td>{{r.nazwa}}</td>
+                            <td>{{r.opis}}</td>
+                            <td>
+                                <a href="index.html#!/ochrona/edytuj/{{r.id}}" role="button">Zmień</a>
+                            </td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!--Region i uprawy-->
+            <div role="tabpanel" class="tab-pane" id="regionIuprawa">
+                Wybierz region:
+                <br/><select class="input-large form-control"
+                              ng-model="wybranyRegion"
+                              ng-options="r.nazwa for r in wszystkieRegiony">
+                </select>
+                Wybierz uprawy:
+                <multiple-autocomplete
+                    ng-model="wybraneUprawy"
+                    object-property="nazwa"
+                    suggestions-arr="wszystkieUprawy">
+                </multiple-autocomplete>
+                <br/>
+                <button type="submit" class="btn btn-default" ng-click="zatwierdzUprawyWregionie()">Zatwierdz</button>
+            </div>
+            <!--Uprawa i zagrozenia-->
+            <div role="tabpanel" class="tab-pane" id="uprawaIzagrozenia">
+                Wybierz uprawe:
+                <br/><select class="input-large form-control"
+                             ng-model="wybranaUprawaTab6"
+                             ng-options="u.nazwa for u in wszystkieUprawy">
+            </select>
+                Wybierz zagrozenia:
+                <multiple-autocomplete
+                        ng-model="wybraneZagrozenia"
+                        object-property="nazwa"
+                        suggestions-arr="wszystkieZagrozenia">
+                </multiple-autocomplete>
+                <br/>
+                <button type="submit" class="btn btn-default" ng-click="zatwierdzZagrozeniaDlaUprawy()">Zatwierdz</button>
+            </div>
+            <!--Zagrozenie i ochrony-->
+            <div role="tabpanel" class="tab-pane" id="zagrozenieIochrony">
+                Wybierz zagrozenie:
+                <br/><select class="input-large form-control"
+                             ng-model="wybraneZagrozenieTabLast"
+                             ng-options="z.nazwa for z in wszystkieZagrozenia">
+            </select>
+                Sposob ochrony:
+                <multiple-autocomplete
+                        ng-model="wybraneOchrony"
+                        object-property="nazwa"
+                        suggestions-arr="wszystkieOchrony">
+                </multiple-autocomplete>
+                <br/>
+                <button type="submit" class="btn btn-default" ng-click="zatwierdzOchronyDlaZagrozenia()">Zatwierdz</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="col-md-1"></div>

@@ -212,6 +212,21 @@ angular.module('app').service('CrudService', function($http) {
         });
     }
 
+        this.usun = function(data, url) {
+            return $http({
+                method: "POST",
+                url: url,
+                data: data,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(function successCallback(response) {
+                return response;
+            }, function errorCallback(response) {
+                return response;
+            });
+        }
+
     // this.edytujRegion = function(region) {
     //     return $http({
     //         method: "POST",

@@ -176,4 +176,15 @@ angular.module('app').controller('DodajController', function($rootScope, $scope,
                        }
                    });
            }
+
+           $scope.usunUprawe = function(uprawa){
+                           CrudService
+                               .usun(uprawa.id, '/api/uprawa/usun')
+                               .then(function(response) {
+                                   if (response.status == 200) {
+                                       alert('Usunieto uprawe.');
+                                       $route.reload();
+                                   }
+                               });
+           }
 });

@@ -13,6 +13,7 @@ import com.app.repositories.ZagrozenieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.PreRemove;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
@@ -207,5 +208,14 @@ public class CrudService {
             isModifed = true;
         }
         return isModifed;
+    }
+
+    @PreRemove
+    public void usunUprawe(long id){
+        Optional<Uprawa> uprawa = znajdzJednaUprawe(id);
+        if(uprawa.isPresent()){
+            uprawaRepository.usunPowiazania(id);
+            uprawaRepository.delete(id);
+        }
     }
 }

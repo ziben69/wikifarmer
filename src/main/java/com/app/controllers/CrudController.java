@@ -186,4 +186,15 @@ public class CrudController {
         return new ResponseEntity<Object>(HttpStatus.NO_CONTENT);
     }
 
+    @PostMapping("/uprawa/usun")
+    public ResponseEntity<?> usunUprawe(@RequestBody long id){
+        crudService.usunUprawe(id);
+        Optional<Uprawa> uprawa = crudService.znajdzJednaUprawe(id);
+        if(!uprawa.isPresent()){
+            return ResponseEntity.ok(true);
+        }else{
+            return new ResponseEntity<Object>(HttpStatus.NOT_MODIFIED);
+        }
+    }
+
 }

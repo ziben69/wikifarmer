@@ -13,7 +13,7 @@
 <body>
 
 <header>
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-inverse" ng-controller="NavBarController">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -30,9 +30,19 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#!/"><i class="fa fa-shield"></i>Strona główna</a></li>
-                    <li><a href="#!/login"><i class="fa fa-shield"></i>Logowanie</a></li>
-                    <li><a href="#!/zarzadzaj"><i class="fa fa-shield"></i>Zarzadzaj</a></li>
+                    <li><a href="#!/main"><i class="fa fa-shield"></i>Strona główna</a></li>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li ng-if="!email"><a href="#!/login"><i class="fa fa-shield"></i>Zaloguj</a></li>
+                        <li ng-if="!email"><a href="#!/register"><i class="fa fa-shield"></i>Zarejestruj</a></li>
+                        <li ng-if="email" class="dropdown">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                               aria-expanded="false">{{email}} <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="" ng-click="logoutUser()">Wyloguj</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <li ng-show="pokazZarzadzaj"><a href="#!/zarzadzaj"><i class="fa fa-shield"></i>Zarządzaj</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
@@ -57,11 +67,12 @@
 <script type="text/javascript" src="/app/app.js" charset="utf-8"></script>
 <script type="text/javascript" src='/app/main/MainController.js' charset="utf-8"></script>
 
-<script type="text/javascript" src='/app/user/LoginController.js' charset="utf-8"></script>
-<script type="text/javascript" src='/app/user/LoginService.js' charset="utf-8"></script>
+<script type="text/javascript" src='/app/main/LoginController.js' charset="utf-8"></script>
+<script type="text/javascript" src='/app/main/LoginService.js' charset="utf-8"></script>
 
 <script type="text/javascript" src='/app/user/UserController.js' charset="utf-8"></script>
 <script type="text/javascript" src='/app/user/UserService.js' charset="utf-8"></script>
+<script type="text/javascript" src='/app/user/RegisterController.js' charset="utf-8"></script>
 
 <!--Region-->
 <script type="text/javascript" src='/app/main/DodajController.js' charset="utf-8"></script>
@@ -70,4 +81,5 @@
 <script type="text/javascript" src='/app/main/EdytujUpraweController.js' charset="utf-8"></script>
 <script type="text/javascript" src='/app/main/EdytujZagrozenieController.js' charset="utf-8"></script>
 <script type="text/javascript" src='/app/main/EdytujOchroneController.js' charset="utf-8"></script>
+<script type="text/javascript" src='/app/main/NavBarController.js' charset="utf-8"></script>
 

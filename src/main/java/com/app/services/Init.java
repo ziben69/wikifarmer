@@ -54,14 +54,27 @@ public class Init {
         }
 
 
-        AppUser user = userRepository.findByLogin("admin");
+        AppUser user = userRepository.findByEmail("admin@gmail.com");
         if(user==null){
             user = new AppUser();
-            user.setLogin("admin");
+            user.setEmail("admin@gmail.com");
+            user.setFirstName("Giacomo");
+
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
             user.setPassword(encoder.encode("admin"));
             user.setRole(Role.ADMIN);
             userRepository.save(user);
+        }
+        AppUser user2 = userRepository.findByEmail("user@gmail.com");
+        if(user2==null){
+            user2 = new AppUser();
+            user2.setEmail("user@gmail.com");
+            user2.setFirstName("Marcin");
+
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+            user2.setPassword(encoder.encode("user"));
+            user2.setRole(Role.USER);
+            userRepository.save(user2);
         }
     }
 }

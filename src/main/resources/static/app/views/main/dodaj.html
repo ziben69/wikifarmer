@@ -32,6 +32,7 @@
                         <label for="rOpis">Opis:</label>
                         <textarea rows="3" class="form-control" id="rOpis" ng-model="region.opis"></textarea>
                     </div>
+
                     <button type="submit" class="btn btn-default" ng-click="dodajRegion()">Dodaj</button>
                 </form>
                 <br/>
@@ -77,6 +78,16 @@
                         <label for="uOpis">Opis:</label>
                         <textarea rows="3" class="form-control" id="uOpis" ng-model="uprawa.opis"></textarea>
                     </div>
+
+                    <div class="form-group">
+                    <label for="file">Obraz:</label>
+                    <div>
+                        <input type="file" id="file" placeholder="" class="btn-success"/>
+                        <button id="confirmBtnImg" class="btn-success" ng-click="addImage()">Potwierdź</button>
+                    </div>
+                    </div>
+                    </form>
+
                     <button type="submit" class="btn btn-default" ng-click="dodajUprawe()">Dodaj</button>
                 </form>
                 <br />
@@ -139,6 +150,7 @@
                             <td>{{r.opis}}</td>
                             <td>
                                 <a href="index.html#!/zagrozenie/edytuj/{{r.id}}" role="button">Zmień</a>
+                                <br/><a href="" ng-click="usunZagrozenie(r)">Usuń</a>
                             </td>
 
                         </tr>
@@ -178,6 +190,7 @@
                             <td>{{r.opis}}</td>
                             <td>
                                 <a href="index.html#!/ochrona/edytuj/{{r.id}}" role="button">Zmień</a>
+                                <br/><a href="" ng-click="usunOchrone(r)">Usuń</a>
                             </td>
 
                         </tr>

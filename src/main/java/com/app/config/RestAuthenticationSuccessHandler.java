@@ -25,7 +25,7 @@ public class RestAuthenticationSuccessHandler
     public void onAuthenticationSuccess(HttpServletRequest request,
                                         HttpServletResponse response, Authentication authentication)
             throws ServletException, IOException {
-        AppUser user = userRepository.findByLogin(authentication.getName());
+        AppUser user = userRepository.findByEmail(authentication.getName());
         SecurityUtils.sendResponse(response, HttpServletResponse.SC_OK, user);
     }
 }

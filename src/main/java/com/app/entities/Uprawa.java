@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,11 +16,17 @@ public class Uprawa {
     private String nazwa;
     @Column(columnDefinition="LONGTEXT")
     private String opis;
+    private String nazwaPliku;
+//    private byte[] plik;
     @ManyToMany
     private List<Zagrozenie> zagrozenia = new ArrayList();
     @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
     @ManyToMany(mappedBy = "uprawy")
     private List<Region> regiony = new ArrayList<>();
+
+
+    @Column(columnDefinition = "LONGTEXT")
+    private String image;
 
     public Uprawa() {
     }
@@ -64,4 +71,27 @@ public class Uprawa {
         this.regiony = regiony;
     }
 
+    public String getNazwaPliku() {
+        return nazwaPliku;
+    }
+
+    public void setNazwaPliku(String nazwaPliku) {
+        this.nazwaPliku = nazwaPliku;
+    }
+
+//    public byte[] getPlik() {
+//        return plik;
+//    }
+//
+//    public void setPlik(byte[] plik) {
+//        this.plik = plik;
+//    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 }

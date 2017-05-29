@@ -36,9 +36,9 @@ public class WebSecurityConfiguration extends GlobalAuthenticationConfigurerAdap
             @Override
             public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
 
-                AppUser user = userRepository.findByLogin(login);
+                AppUser user = userRepository.findByEmail(login);
                 if (user!=null) {
-                    return new org.springframework.security.core.userdetails.User(user.getLogin(), user.getPassword(), true, true, true, true, AuthorityUtils.createAuthorityList(user.getRole().name()));
+                    return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), true, true, true, true, AuthorityUtils.createAuthorityList(user.getRole().name()));
                 }
                 throw new UsernameNotFoundException("could not find the user '"
                         + login + "'");

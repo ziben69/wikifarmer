@@ -10,7 +10,7 @@ angular.module('app').controller('DodajController', function($rootScope, $scope,
             .then(function(response) {
                 if (response.status == 200) {
                     czyscPola($scope.region);
-                    alert('Region zosta dodany.');
+                    alert('Region został dodany.');
                     $route.reload();
                 } else {
                     alert('Problem z dodaniem regionu.');
@@ -18,6 +18,14 @@ angular.module('app').controller('DodajController', function($rootScope, $scope,
             });
     }
     $scope.dodajUprawe = function() {
+            //var images = [];
+            var strBase64 = $scope.data.replace('data:image/jpeg;base64,', '');
+//            console.log('marcin ' + strBase64);
+//            var obj = {
+//                image: strBase64
+//            }
+            //images.push(obj);
+            $scope.uprawa.zdjecie = strBase64;
         CrudService
             .dodajUprawe($scope.uprawa)
             .then(function(response) {
@@ -187,4 +195,39 @@ angular.module('app').controller('DodajController', function($rootScope, $scope,
                                    }
                                });
            }
+
+           $scope.usunZagrozenie = function(zagrozenie){
+                                      CrudService
+                                          .usun(zagrozenie.id, '/api/zagrozenie/usun')
+                                          .then(function(response) {
+                                              if (response.status == 200) {
+                                                  alert('Usunieto zagrozenie.');
+                                                  $route.reload();
+                                              }
+                                          });
+           }
+
+           $scope.usunOchrone = function(ochrona){
+                                                 CrudService
+                                                     .usun(ochrona.id, '/api/ochrona/usun')
+                                                     .then(function(response) {
+                                                         if (response.status == 200) {
+                                                             alert('Usunieto ochrone.');
+                                                             $route.reload();
+                                                         }
+                                                     });
+           }
+
+           $scope.data = 'none';
+               $scope.addImage = function () {
+                   var f = document.getElementById('file').files[0],
+                       r = new FileReader();
+                   r.onloadend = function (e) {
+                       $scope.data = e.target.result;
+                   }
+                   r.readAsDataURL(f)
+                   //alert($scope.data);
+                   //console.log($scope.data);
+                   alert('Ok');
+               }
 });

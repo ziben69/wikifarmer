@@ -15,7 +15,7 @@ public class SecurityController {
     @RequestMapping(value = "/security/account", method = RequestMethod.GET)
     public @ResponseBody
     AppUser getUserAccount() {
-        AppUser user = userRepository.findByLogin(SecurityUtils.getCurrentLogin());
+        AppUser user = userRepository.findByEmail(SecurityUtils.getCurrentLogin());
         if(user!=null)
             user.setPassword(null);
         return user;

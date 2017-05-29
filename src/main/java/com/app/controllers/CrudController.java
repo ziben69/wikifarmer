@@ -11,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Optional;
 
@@ -196,5 +198,24 @@ public class CrudController {
             return new ResponseEntity<Object>(HttpStatus.NOT_MODIFIED);
         }
     }
-
+    @PostMapping("/zagrozenie/usun")
+    public ResponseEntity<?> usunZagrozenie(@RequestBody long id){
+        crudService.usunZagrozenie(id);
+        Optional<Zagrozenie> zagrozenie = crudService.znajdzJedenoZagrozenie(id);
+        if(!zagrozenie.isPresent()){
+            return ResponseEntity.ok(true);
+        }else{
+            return new ResponseEntity<Object>(HttpStatus.NOT_MODIFIED);
+        }
+    }
+    @PostMapping("/ochrona/usun")
+    public ResponseEntity<?> usunOchrone(@RequestBody long id){
+        crudService.usunOchrone(id);
+        Optional<Ochrona> ochrona = crudService.znajdzJedenoOchrone(id);
+        if(!ochrona.isPresent()){
+            return ResponseEntity.ok(true);
+        }else{
+            return new ResponseEntity<Object>(HttpStatus.NOT_MODIFIED);
+        }
+    }
 }

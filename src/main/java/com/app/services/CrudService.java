@@ -43,6 +43,7 @@ public class CrudService {
         Uprawa uprawa = new Uprawa();
         uprawa.setNazwa(nazwaIOpis.getNazwa());
         uprawa.setOpis(nazwaIOpis.getOpis());
+        uprawa.setImage(nazwaIOpis.getZdjecie());
         uprawaRepository.save(uprawa);
         if(Optional.ofNullable(uprawa.getId()).isPresent())
             return true;
@@ -216,6 +217,24 @@ public class CrudService {
         if(uprawa.isPresent()){
             uprawaRepository.usunPowiazania(id);
             uprawaRepository.delete(id);
+        }
+    }
+
+    @PreRemove
+    public void usunZagrozenie(long id){
+        Optional<Zagrozenie> zagrozenie = znajdzJedenoZagrozenie(id);
+        if(zagrozenie.isPresent()){
+            zagrozenieRepository.usunPowiazania(id);
+            zagrozenieRepository.delete(id);
+        }
+    }
+
+    @PreRemove
+    public void usunOchrone(long id){
+        Optional<Ochrona> ochrona = znajdzJedenoOchrone(id);
+        if(ochrona.isPresent()){
+            ochronaRepository.usunPowiazania(id);
+            ochronaRepository.delete(id);
         }
     }
 }

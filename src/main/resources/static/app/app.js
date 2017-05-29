@@ -6,7 +6,7 @@ var app = angular.module('app', ['ngRoute',
 
 app.config(function($routeProvider) {
     $routeProvider
-        .when('/', {
+        .when('/main', {
             templateUrl: '/app/views/main/main.html',
             controller: 'MainController'
         })
@@ -18,6 +18,10 @@ app.config(function($routeProvider) {
             templateUrl: '/app/views/user/users.html',
             controller: 'UserController'
         })
+         .when('/register', {
+                    templateUrl: '/app/views/user/register.html',
+                    controller: 'RegisterController'
+                })
         .when('/zarzadzaj', {
             templateUrl: '/app/views/main/dodaj.html',
             controller: 'DodajController'
@@ -56,4 +60,49 @@ app.filter('removeSpaces', function() {
         }
         return string.replace(/[\s]/g, '');
     };
+});
+
+app.run(function($localStorage, $sessionStorage, $rootScope, LoginService, $location) {
+    var checkUserInLocalStorage = function() {
+        if ($sessionStorage.currentUser == undefined) {
+            $sessionStorage.currentUser = null;
+            $sessionStorage.pokazZarzadzaj = false;
+            $location.path('/login');
+        } else {
+        var role = $sessionStorage.currentUser.role;
+                    if(angular.equals(role, "ADMIN")){
+                        $rootScope.pokazZarzadzaj = true;
+                        console.log('true');
+                    }else{
+                     $rootScope.pokazZarzadzaj = false;
+                    }
+            $sessionStorage.pokazZarzadzaj = true;
+        }
+    };
+    checkUserInLocalStorage();
+
+    $rootScope.$on("$locationChangeStart", function(event, next, current) {
+//         var currentPath = current.$$route.originalPath;
+//        console.log(currentPath);
+
+    });
+        $rootScope.$on('$routeChangeSuccess', function (e, current, pre) {
+            var currentPath = current.$$route.originalPath;
+                console.log(currentPath);
+                if(!angular.equals(currentPath, '/register')){
+                  checkUserInLocalStorage();
+                  if($sessionStorage.currentUser!=undefined){
+                   var role = $sessionStorage.currentUser.role;
+                                    if(angular.equals(role, "ADMIN")){
+                                       $rootScope.pokazZarzadzaj = true;
+                                       console.log('true');
+                                    }else{
+                                      $rootScope.pokazZarzadzaj = false;
+                                      $location.path('/main');
+                                    }
+                  }
+
+                }
+
+        });
 });

@@ -1,8 +1,88 @@
-.mapa{
-    position: relative;
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,100,900);
 
+.navbar-inverse {
+    background-color: #222;
+    border-color: #080808;
+    border-radius:0px;
 }
 
+.tytul{
+  background: #E1332D;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+  height: 300px;
+  width: 100%;
+  color:#fff;
+  margin-top:-20px;
+
+    padding: 1em;
+    text-align: center;
+    vertical-align: middle;
+}
+h1 {
+  color: #fff;
+  font-size: 6.25vw;
+  font-weight: 900;
+  margin: 0.6em 0 0em;
+}
+h4 {
+  color: #fff;
+  font-size: 2.25vw;
+  font-weight: 900;
+
+}
+.panel-primary {
+border: 0px;
+}
+
+.region_opis{
+text-align:justify;
+font-family: 'Roboto', sans-serif;
+}
+
+.mapa{
+    position: relative;
+    height: 400px;
+    margin-left: 20px;
+    margin-top:-20px;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-size:10px;
+}
+
+.naglowki {
+color:white;
+padding:20px;
+background-color: #337ab7;
+width:100%;
+border-radius: 0px 10px 10px 0px;
+text-decoration: underline;
+font-size:16px;
+margin-top: 10px;
+}
+.tabela {
+width:104.6%;
+padding: 20px;
+margin-left:-30px;
+background-color:#1d1f20;
+color:#fff; !important;
+text-align:justify;
+}
+
+.footer {
+ min-height:40px; background-color:#000000;
+ text-align:left; color:#FFF; padding:10px 0; margin-bottom:0px;
+}
+.copy{
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #000000;
+  color:#fff;
+  text-align: center;
+}
 .btn1{
     background:url(./images/1.png) no-repeat;
     cursor:pointer;
@@ -192,4 +272,52 @@
     margin-left:218px;
     margin-top:250px;
     position: absolute;
+}
+
+.opis{
+text-align:justify;
+color:#fff;
+}
+
+.container{
+width:100%; !important
+}
+
+.button {
+  border-radius: 4px;
+  background-color: #337ab7;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 14px;
+  padding: 10px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
 }

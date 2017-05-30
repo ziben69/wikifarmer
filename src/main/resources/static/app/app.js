@@ -2,7 +2,8 @@ var app = angular.module('app', ['ngRoute',
 'ngResource',
 'ui.bootstrap',
 'ngStorage',
-'multipleSelect']);
+'multipleSelect',
+'angularUtils.directives.dirPagination']);
 
 app.config(function($routeProvider) {
     $routeProvider

@@ -2,7 +2,7 @@ angular.module('app').controller('MainController', function($rootScope, $scope, 
     $scope.message = 'MainController 1';
     $scope.regiony = new Array();
     $scope.wybranyRegion;
-
+    $scope.test;
     var znajdzRegiony = function() {
         CrudService
             .znajdzWszystkieRegiony()
@@ -48,4 +48,15 @@ angular.module('app').controller('MainController', function($rootScope, $scope, 
                 }
             }
         }
+
+         $scope.znajdzDaneWybranegoRegionu = function(id){
+                    CrudService
+                        .znajdzJedenRegion(id)
+                        .then(function(response) {
+                            if (response.status == 200) {
+                                $scope.wybranyRegion = response.data;
+                            }
+                        });
+            }
+            $scope.wartosc = false;
 });

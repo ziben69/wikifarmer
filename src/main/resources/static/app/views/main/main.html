@@ -1,147 +1,128 @@
-<div class="row">
-
 
 <div class="container">
     <div class="col-md-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">MENU</div>
+        <div class="panel panel-primary">
             <div class="panel-body">
-                <!--<div class="form-group">-->
-                    <!--<div class="col-md-12">-->
-                        <!--<form role="form" method="post">-->
-                            <!--<div class="form-group">-->
-                                <!--<label>Region:</label>-->
-                <div class="mapa">
-                                <button class="btn1" ng-click="wybierzRegionZPrzycisku('Zachodniopomorskie')">Zachodniopomorskie</button>
+                <div class="col-md-5"><label class="naglowki">Wybierz region:</label> <hr/><br/>
+
+                            <div class="mapa">
+                                <button class="btn1" ng-click="wybierzRegionZPrzycisku('Zachodniopomorskie')">
+                                    Zachodniopomorskie
+                                </button>
                                 <button class="btn2" ng-click="wybierzRegionZPrzycisku('Pomorskie')">Pomorskie</button>
-                                <button class="btn3" ng-click="wybierzRegionZPrzycisku('Warmińsko-mazurskie')">Warmińsko-mazurskie</button>
+                                <button class="btn3" ng-click="wybierzRegionZPrzycisku('Warmińsko-mazurskie')">
+                                    Warmińsko-mazurskie
+                                </button>
                                 <button class="btn4" ng-click="wybierzRegionZPrzycisku('Podlaskie')">Podlaskie</button>
                                 <button class="btn5" ng-click="wybierzRegionZPrzycisku('Lubuskie')">Lubuskie</button>
-                                <button class="btn6" ng-click="wybierzRegionZPrzycisku('Wielkopolskie')">Wielkopolskie</button>
-                                <button class="btn7" ng-click="wybierzRegionZPrzycisku('Kujawsko-pomorskie')">Kujawsko-pomorskie</button>
-                                <button class="btn8" ng-click="wybierzRegionZPrzycisku('Mazowieckie')">Mazowieckie</button>
-                                <button class="btn9" ng-click="wybierzRegionZPrzycisku('Dolnośląskie')">Dolnośląskie</button>
+                                <button class="btn6" ng-click="wybierzRegionZPrzycisku('Wielkopolskie')">Wielkopolskie
+                                </button>
+                                <button class="btn7" ng-click="wybierzRegionZPrzycisku('Kujawsko-pomorskie')">
+                                    Kujawsko-pomorskie
+                                </button>
+                                <button class="btn8" ng-click="wybierzRegionZPrzycisku('Mazowieckie')">Mazowieckie
+                                </button>
+                                <button class="btn9" ng-click="wybierzRegionZPrzycisku('Dolnośląskie')">Dolnośląskie
+                                </button>
                                 <button class="btn10" ng-click="wybierzRegionZPrzycisku('Łódzkie')">Łódzkie</button>
                                 <button class="btn11" ng-click="wybierzRegionZPrzycisku('Lubelskie')">Lubelskie</button>
                                 <button class="btn12" ng-click="wybierzRegionZPrzycisku('Opolskie')">Opolskie</button>
                                 <button class="btn13" ng-click="wybierzRegionZPrzycisku('Śląskie')">Śląskie</button>
-                                <button class="btn14" ng-click="wybierzRegionZPrzycisku('Małopolskie')">Małopolskie</button>
+                                <button class="btn14" ng-click="wybierzRegionZPrzycisku('Małopolskie')">Małopolskie
+                                </button>
                                 <button class="btn15" ng-click="wybierzRegionZPrzycisku('Podkarpackie')">Podkarpackie</button>
-                                <button class="btn16" ng-click="wybierzRegionZPrzycisku('Świętokrzyskie')">Świętokrzyskie</button>
-                </div>
-                <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-
-                                <!--<select class="input-large form-control"-->
-                                        <!--ng-model="wybranyRegion"-->
-                                        <!--ng-options="r.nazwa for r in regiony">-->
-                                <!--</select>-->
-                            <!--</div>-->
-                        <!--</form>-->
-                    <!--</div><br />-->
-                    <div class="col-md-3">
-                        <label style="text-align: right; clear: both; float:left; margin-right:15px;">Uprawa:</label>
-                        <!--<select class="input-large form-control"-->
-                                <!--ng-model="wybranaUprawa"-->
-                                <!--ng-options="u.nazwa for u in wybranyRegion.uprawy">-->
-                        <!--</select>-->
-                        <img ng-src="data:image/JPEG;base64,{{wybranaUprawa.image}}" alt="Image">
-                    </div>
-                    <div class="col-md-3">
-                        <div style="margin-top:25px">
-                            <button type="button" class="btn btn-primary">Szukaj</button>
-
-                            <button type="button" class="btn btn-danger">Wyczyść</button>
+                                <button class="btn16" ng-click="wybierzRegionZPrzycisku('Świętokrzyskie')">
+                                    Świętokrzyskie
+                                </button>
+                            </div>
                         </div>
-                    </div>
+
+                <div class="col-md-7"><label  class="naglowki">Opis wybranego regionu:</label> <hr/><br/>
+                    <div class="region_opis">{{ wybranyRegion.opis }}</div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-</div>
-</div>
 
-<br/>
-<div class="row">
+        <div class="tabela">
+                <div class="row">
+                    <div class="col-md-12">
+                                <div class="col-md-4"><label class="naglowki">Uprawy:</label> <hr/><br/>
+                                    <!--href="!#{{uprawa.id}}{{uprawa.nazwa | removeSpaces}}"-->
+                                    <input ng-model="test" class="form-control input-sm"/><br />
+                                    <div class="panel-group" id="accordion"
+                                         dir-paginate="uprawa in wybranyRegion.uprawy | filter: test | orderBy:'nazwa'| itemsPerPage: 5">
 
-    <div class="col-md-12">
-        <div class="col-md-2"></div>
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <div class="col-md-4"><label>Uprawy:</label> <br />
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <div class="panel-group" id="accordion"
-                                 ng-repeat="uprawa in wybranyRegion.uprawy">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="!#{{uprawa.id}}{{uprawa.nazwa | removeSpaces}}"
-                                            ng-click="znajdzDaneWybranejUprawy(uprawa.id)">
-                                                {{uprawa.nazwa}}
-                                            </a>
-                                        </h4>
+                                        <a data-toggle="collapse" data-parent="#accordion" class="button"
+                                           href="!#{{uprawa.id}}{{uprawa.nazwa | removeSpaces}}"
+                                           ng-click="znajdzDaneWybranejUprawy(uprawa.id)">
+                                            <span>{{uprawa.nazwa}}</span>
+                                        </a>
+                                        <div id="{{uprawa.id}}{{uprawa.nazwa | removeSpaces}}"
+                                             class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                <div class="opis">
+                                                    <center><img ng-src="data:image/JPEG;base64,{{wybranaUprawa.image}}"
+                                                                 alt="Image"></center>
+                                                    <br/>
+                                                    {{uprawa.opis}}
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div id="{{uprawa.id}}{{uprawa.nazwa | removeSpaces}}" class="panel-collapse collapse">
-                                        <div class="panel-body">
-                                            {{uprawa.opis}}
+
+                                    <dir-pagination-controls></dir-pagination-controls>
+                                </div>
+
+
+                                <div class="col-md-4"><label class="naglowki">Zagrożenia:</label> <hr/><br/>
+
+                                    <div class="panel-group" id="accordion2"
+                                         ng-repeat="zagrozenie in wybranaUprawa.zagrozenia">
+
+                                        <a data-toggle="collapse" data-parent="#accordion" class="button"
+                                           href="!#{{zagrozenie.id}}{{zagrozenie.nazwa | removeSpaces}}"
+                                           ng-click="znajdzDaneWybranegoZagrozenia(zagrozenie.id)">
+                                            {{zagrozenie.nazwa}}
+                                        </a>
+
+                                        <div id="{{zagrozenie.id}}{{zagrozenie.nazwa | removeSpaces}}"
+                                             class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                {{zagrozenie.opis}}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+
+
+                                <div class="col-md-4"><label class="naglowki">Ochrona:</label> <hr/><br/>
+
+                                    <div class="panel-group" id="accordion3"
+                                         ng-repeat="ochrona in wybraneZagrozenie.ochrony">
+                                        <a data-toggle="collapse" data-parent="#accordion" class="button"
+                                           href="!#{{ochrona.id}}{{ochrona.nazwa | removeSpaces}}"
+                                           ng-click="">
+                                            {{ochrona.nazwa}}
+                                        </a>
+
+
+                                        <div id="{{ochrona.id}}{{ochrona.nazwa | removeSpaces}}"
+                                             class="panel-collapse collapse">
+                                            <div class="panel-body">
+                                                {{ochrona.opis}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                     </div>
-                </div>
-                <div class="col-md-4"><label>Zagrożenia:</label> <br />
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <div class="panel-group" id="accordion2"
-                                 ng-repeat="zagrozenie in wybranaUprawa.zagrozenia">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="!#{{zagrozenie.id}}{{zagrozenie.nazwa | removeSpaces}}"
-                                               ng-click="znajdzDaneWybranegoZagrozenia(zagrozenie.id)">
-                                                {{zagrozenie.nazwa}}
-                                            </a>
-                                        </h4>
-                                    </div>
-                                    <div id="{{zagrozenie.id}}{{zagrozenie.nazwa | removeSpaces}}" class="panel-collapse collapse">
-                                        <div class="panel-body">
-                                            {{zagrozenie.opis}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4"><label>Ochrona:</label> <br />
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <div class="panel-group" id="accordion3"
-                                 ng-repeat="ochrona in wybraneZagrozenie.ochrony">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="!#{{ochrona.id}}{{ochrona.nazwa | removeSpaces}}"
-                                               ng-click="">
-                                                {{ochrona.nazwa}}
-                                            </a>
-                                        </h4>
-                                    </div>
-                                    <div id="{{ochrona.id}}{{ochrona.nazwa | removeSpaces}}" class="panel-collapse collapse">
-                                        <div class="panel-body">
-                                            {{ochrona.opis}}
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
+</div>
+<div class="footer">
+    <div class="col-md-6">
+        <p>© 2017 Wiki-Farmer. Realizacja Giacomo Goraj</p>
+    </div>
 </div>

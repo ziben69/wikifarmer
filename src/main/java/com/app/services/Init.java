@@ -29,8 +29,8 @@ public class Init {
     public void init(){
 
         List<Region> region = new ArrayList<>();
-        region.add(new Region("Podkarpackie", "Rzeszów"));
-        region.add(new Region("Małopolskie", "Kraków"));
+        region.add(new Region("Podkarpackie", "W użytkowaniu gospodarstw rolnych znajduje się 763,3 tys.ha tj. 42,8% ogólnej powierzchni województwa. Za gospodarstwo rolne uważa się wyodrębnioną pod względem ekonomicznym i technicznym jednostkę prowadzącą działalność rolniczą, a więc uprawę roślin oraz chów i hodowlę zwierząt"));
+        region.add(new Region("Małopolskie", "Województwo małopolskie charakteryzuje się zróżnicowanym ukształtowaniem terenu i warunkami klimatycznymi. W części północnej województwa (powiat miechowski, proszowicki i częściowo krakowski) gleby są zdecydowanie lepsze a klimat sprzyja produkcji rolnej, przez co właśnie tam dominują gospodarstwa większe i nastawione na produkcję żywności na rynek. Część środkowa województwa (między innymi powiaty bocheński, wielicki, część krakowskiego i tarnowskiego) znajduje się pod mocnym wpływem dużych aglomeracji miejskich Krakowa i Tarnowa, a ludność zamieszkująca te obszary z reguły właśnie tam poszukuje zatrudnienia, w rolnictwie widząc jedynie dodatkowe źródło dochodu. Bardziej górzysta część południowa województwa obejmuje tereny cenne pod względem przyrodniczym, ale o niekorzystnych warunkach do produkcji rolnej między innymi ze względu na ostrzejszy klimat i niesprzyjające ukształtowanie terenu. Gospodarstwa z tego rejonu są małe, grunty rozdrobnione, a ludność poszukuje zatrudnienia z reguły poza rolnictwem. Dominuje tradycyjny model gospodarowania co często bywa wykorzystywane jako atut przy poszukiwaniu odpowiedniej niszy rynkowej (agroturystyka, produkcja ekologiczna i regionalna)."));
         region.add(new Region("Świętokrzyskie", "Kielce"));
         region.add(new Region("Mazowieckie", "Warszawa"));
         region.add(new Region("Śląskie", "Katowice"));
